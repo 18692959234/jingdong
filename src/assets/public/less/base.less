@@ -1,0 +1,65 @@
+@vm_fontsize: 75; // iPhone 6尺寸的根元素大小基准值
+@vm_design: 750;
+//文字对齐
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.limitText(@Num) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @Num;
+}
+
+//px 转 rem 方法
+.rem(@name, @px) {
+    @{name}: (@px / @vm_fontsize) * 1rem;
+}
+
+.rem2(@name, @px, @px2) {
+    @{name}: (@px / @vm_fontsize) * 1rem (@px2 / @vm_fontsize) * 1rem;
+}
+
+.rem4(@name, @px, @px2, @px3, @px4) {
+    @{name}: (@px / @vm_fontsize) * 1rem (@px2 / @vm_fontsize) * 1rem (@px3 / @vm_fontsize) * 1rem (@px4 / @vm_fontsize) * 1rem;
+}
+
+//rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推
+html {
+  font-size: (@vm_fontsize / (@vm_design / 2)) * 100vw;
+  // 同时，通过Media Queries 限制根元素最大最小值
+  @media screen and (max-width: 320px) {
+    font-size: 64px;
+  }
+  @media screen and (min-width: 540px) {
+    font-size: 108px;
+  }
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  //  background: @body_bgcolor;
+}
+
+//清除浮动
+.clear {
+  clear: both;
+}
+//定位
+.pr {
+  position: relative;
+}
+//文字距离
+.letter(@px) {
+  letter-spacing: @px;
+}

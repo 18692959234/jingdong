@@ -1,0 +1,59 @@
+@import "../../../../less/reset.css";
+
+
+html{ width: 100%;    height: 100%;}
+
+@LoginColor:#fff;//登录盒子背景色；
+@LoginWarpWidth:320px;//登录盒子宽
+@LoginWarpHeight:320px;//登录盒子高
+@LoginWarpPadding:25px;//登录盒子内边距
+@LoginInputMarin:20px;//input 盒子 下边距
+@LoginInputHeight:36px;//input 高
+.page{
+  width:100%;height:100%; background: #324057;
+  position: relative;
+
+  .login-warp{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    width: @LoginWarpWidth;
+    height: @LoginWarpHeight;
+    margin-left: -@LoginWarpWidth/2 ;
+    margin-top: -@LoginWarpHeight/2 ;
+
+    .title{
+      text-align: center;
+      color: @LoginColor;
+      font-size:34px;
+      margin-bottom: 40px;
+    }
+    .main{
+      box-sizing: border-box;
+      padding: @LoginWarpPadding;
+      background: @LoginColor;
+      border-radius: 5px;
+
+      input{
+        //height: @LoginInputHeight;
+        //margin-bottom:@LoginInputMarin ;
+      }
+    }
+
+
+  }
+
+  .ivu-form-item{
+    input,button{height: @LoginInputHeight;}
+    margin-bottom: 30px;
+  }
+
+  .ivu-form-item-content{
+    text-align: center;
+    button{
+      width: 100%;
+    }
+  }
+
+
+}
