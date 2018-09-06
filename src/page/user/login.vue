@@ -45,16 +45,38 @@
           ],
           password: [
             { required: true, message: '请输入密码.', trigger: 'blur' },
-            { type: 'string', min: 6, message: '密码至少6位,请重新输入', trigger: 'blur' }
+            { type: 'string', min: 4, message: '密码至少4位,请重新输入', trigger: 'blur' }
           ]
         }
       }
     },
     methods: {
       handleSubmit(name) {
+        var self=this;
+        var username=self.formInline.user;
+        var password=self.formInline.password;
+
         this.$refs[name].validate((valid) => {
           if (valid) {
-            this.$Message.success('Success!');
+            // this.$Message.success('Success!');
+            self.$axios.post('api/api/admin/login',{username,password})
+              .then(res=>{
+
+
+                  if(res.data.code==200){
+                  self.$router.push({name:'homeIndex'})
+                  }
+                  else {
+                    // this.$Message.error(res.data.msg);
+                    this.$Notice.open({
+                      title: '提示',
+                      desc: res.data.msg,
+                      duration: 3
+                    });
+
+                  }
+
+              })
           } else {
             this.$Message.error('错误!');
           }
