@@ -29,7 +29,7 @@
 		</TcCommonView>
 	</template>
 	
-	```
+  ```
 3. scss中使用使用主题背景色：```background:var(--primary)```
 
 ## 国际化使用方式(目前支持三种语言：中文、英文、繁体字)
